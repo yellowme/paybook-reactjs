@@ -12,7 +12,7 @@ module.exports = {
   },
   devtool: 'eval-source-map',
   entry: [
-     './index.js',
+     './index.dev.js',
   ],
   output: {
     path: path.join(__dirname, './dist'),

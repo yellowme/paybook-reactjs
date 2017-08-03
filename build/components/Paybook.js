@@ -23,27 +23,31 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 var propTypes = {
-  token: _propTypes2.default.string,
-  theme: _propTypes2.default.string
+  options: _propTypes2.default.object
 };
 
 var defaultProps = {
-  baseDiv: 'sync_container'
+  options: {}
 };
 
-var PaybookWidget = function (_Component) {
-  _inherits(PaybookWidget, _Component);
+var Paybook = function (_React$Component) {
+  _inherits(Paybook, _React$Component);
 
-  function PaybookWidget(props) {
-    _classCallCheck(this, PaybookWidget);
+  function Paybook(props) {
+    _classCallCheck(this, Paybook);
 
-    var _this = _possibleConstructorReturn(this, (PaybookWidget.__proto__ || Object.getPrototypeOf(PaybookWidget)).call(this, props));
+    var _this = _possibleConstructorReturn(this, (Paybook.__proto__ || Object.getPrototypeOf(Paybook)).call(this, props));
 
     _this.init = _this.init.bind(_this);
     return _this;
   }
 
-  _createClass(PaybookWidget, [{
+  _createClass(Paybook, [{
+    key: 'componentDidMount',
+    value: function componentDidMount() {
+      this.init();
+    }
+  }, {
     key: 'init',
     value: function init() {
       var w = window;
@@ -56,34 +60,27 @@ var PaybookWidget = function (_Component) {
       w[r] = w[r] || function () {
         w[r].q = w[r].q || [].push(arguments);
       };
-      var js,
+      var js = void 0,
           fjs = d.getElementsByTagName(s)[0],
-          p = /^http:/.test(d.location) ? "http" : "https";
+          p = /^http:/.test(d.location) ? 'http' : 'https';
       if (!d.getElementById(id)) {
         js = d.createElement(s);
         js.id = id;
-        js.src = p + "://www.paybook.com/sync/widget.js";
+        js.src = p + '://www.paybook.com/sync/widget.js';
         fjs.parentNode.insertBefore(js, fjs);
       }
-      window.syncWidget.options = {
-        token: this.props.token,
-        theme: this.props.theme,
-        baseDiv: this.props.baseDiv
-      };
-    }
-  }, {
-    key: 'componentDidMount',
-    value: function componentDidMount() {
-      this.init();
+      window.syncWidget.options = Object.assign({}, this.props.options);
     }
   }, {
     key: 'render',
     value: function render() {
-      return _react2.default.createElement('div', { id: this.props.baseDiv });
+      return _react2.default.createElement('div', { id: this.props.options.baseDiv });
     }
   }]);
 
-  return PaybookWidget;
-}(_react.Component);
+  return Paybook;
+}(_react2.default.Component);
 
-exports.default = PaybookWidget;
+Paybook.propTypes = propTypes;
+Paybook.defaultProps = defaultProps;
+exports.default = Paybook;
