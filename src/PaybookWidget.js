@@ -39,7 +39,6 @@ class PaybookWidget extends Component {
   }
 
   render() {
-    console.log(this.props);
     return(
       <div id={this.props.options.baseDiv} />
     );
