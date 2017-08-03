@@ -2,11 +2,12 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 const propTypes = {
-  options: PropTypes.object
+  token: PropTypes.string,
+  theme: PropTypes.string
 }
 
 const defaultProps = {
-  options: {}
+  baseDiv: 'sync_container'
 }
 
 class PaybookWidget extends Component {
@@ -31,7 +32,11 @@ class PaybookWidget extends Component {
           js.src=p+"://www.paybook.com/sync/widget.js";
           fjs.parentNode.insertBefore(js,fjs);
       }
-      window.syncWidget.options = Object.assign({}, this.props.options);
+      window.syncWidget.options = {
+        token: this.props.token,
+        theme: this.props.theme,
+        baseDiv: this.props.baseDiv
+      }
   }
 
   componentDidMount(){
@@ -40,7 +45,7 @@ class PaybookWidget extends Component {
 
   render() {
     return(
-      <div id={this.props.options.baseDiv} />
+      <div id={this.props.baseDiv} />
     );
   }
 }
