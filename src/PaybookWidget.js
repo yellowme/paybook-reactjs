@@ -50,6 +50,4 @@ class PaybookWidget extends Component {
   }
 }
 
-PaybookWidget.propTypes = propTypes;
-PaybookWidget.defaultProps = defaultProps;
 export default PaybookWidget;
