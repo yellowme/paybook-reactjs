@@ -4,9 +4,7 @@
       "targets": {
         "chrome": 52,
         "browsers": ["last 2 versions", "safari 7"]
-      },
-      "modules": false,
-      "loose": true
+      }
     }],
     "react"
   ]

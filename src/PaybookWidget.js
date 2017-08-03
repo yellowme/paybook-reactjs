@@ -1,13 +1,4 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-
-const propTypes = {
-  options: PropTypes.object
-}
-
-const defaultProps = {
-  options: {}
-}
 
 class PaybookWidget extends Component {
   constructor(props){
@@ -45,6 +36,4 @@ class PaybookWidget extends Component {
   }
 }
 
-PaybookWidget.propTypes = propTypes;
-PaybookWidget.defaultProps = defaultProps;
 export default PaybookWidget;
